@@ -1,9 +1,14 @@
+import {QueryClient,QueryClientProvider,} from '@tanstack/react-query'
 import { Slot } from 'expo-router';
 import './global.css'
-import { nowPlayingAction } from '@/core/actions/movies/now-playing.action';
 
 export default function RootLayout() {
+
+  const queryClient = new QueryClient()
+
   return (
-    <Slot/>
+    <QueryClientProvider client={queryClient}>
+      <Slot/>
+    </QueryClientProvider>
   );
 }
