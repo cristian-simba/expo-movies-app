@@ -1,11 +1,39 @@
 import { Movie } from "@/infraestructure/interfaces/movie.interface"
-import { View, Text } from "react-native"
+import { useRef } from "react";
+import { View, Text, Dimensions, useWindowDimensions } from "react-native"
+import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel';
+import MoviePoster from "./MoviePoster";
 
-export default function MainSlideShow() {
+interface Props {
+  movies: Movie
+}
+
+export default function MainSlideShow({ movies } : Props) {
+
+  const ref = useRef<ICarouselInstance>(null)
+  const width = useWindowDimensions().width
+
   return (
-    <View className='mt-2'>
-      <Text className='text-3xl font-semibold mb-2 px-4'>Home</Text>
-      
+    <View className='h-[250px] w-full'>
+      <Carousel
+        ref={ref}
+        data={movies}
+        renderItem={({item}) => <MoviePoster id={item.id} poster={item.poster}/> }
+        width={200}
+        height={350}
+        style={{
+            width: width,
+            height: 350,
+            justifyContent: 'center',
+            alignItems: 'center'
+        }}
+        mode="parallax"
+        modeConfig={{
+            parallaxScrollingScale: 0.9,
+            parallaxScrollingOffset: 50,
+        }}
+        defaultIndex={1}
+      />
     </View>
   )
 }
