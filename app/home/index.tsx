@@ -23,9 +23,23 @@ export default function Home() {
       <View className='mt-2 pb-16' style={{ paddingTop: safeArea.top }}>
         <Text className='text-3xl font-semibold px-4'>Home</Text>
         <MainSlideShow movies={nowPlayingQuery.data ?? []}/>
-        <MovieHorizontalList title='Popular' movies={popularQuery.data ?? []}/>
-        <MovieHorizontalList title='Top Rated' movies={topRatedQuery.data ?? []}/>
-        <MovieHorizontalList title='Upcoming' movies={upcomingQuery.data ?? []}/>
+
+        <MovieHorizontalList 
+          title='Popular' 
+          movies={popularQuery.data ?? []}
+          />
+        
+        <MovieHorizontalList 
+          title='Top Rated' 
+          movies={topRatedQuery.data?.pages.flat() ?? []}
+          loadNextPage={topRatedQuery.fetchNextPage}
+        />
+
+        <MovieHorizontalList 
+          title='Upcoming' 
+          movies={upcomingQuery.data ?? []}
+        />
+
       </View>
     </ScrollView>
   )
