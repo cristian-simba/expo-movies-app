@@ -6,7 +6,6 @@ export const popularMoviesAction = async() => {
     try {
         const { data } = await movieApi.get<MovieDBMoviesResponse>('/popular')
         const response = data.results.map(MovieMapper.fromMoviefromTheMovieDBToMovie)
-        console.log(response)
         return response
     } catch(error) {
         console.log(error)

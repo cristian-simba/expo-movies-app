@@ -7,16 +7,15 @@ interface Options {
     page?: number
 }
 
-export const topRatedAction = async({ page = 1 }: Options) =>{
-    try{
-        const { data } = await movieApi.get<MovieDBMoviesResponse>('/top_rated', {
-            params: {
-                page: page
-            }
-        })
-        const response = data.results.map(MovieMapper.fromMoviefromTheMovieDBToMovie)
-        return response
-    } catch (error){
-        console.log(error)
-    }
+export const topRatedAction = async ({ page = 1 }: Options) => {
+  try {
+    const { data } = await movieApi.get<MovieDBMoviesResponse>('/top_rated', {
+      params: { page }
+    });
+    const response = data.results.filter((r): r is NonNullable<typeof r> => !!r).map(MovieMapper.fromMoviefromTheMovieDBToMovie);
+    return response;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }

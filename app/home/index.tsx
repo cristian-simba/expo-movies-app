@@ -1,5 +1,5 @@
-import MainSlideShow from '@/presentation/components/MainSlideShow'
-import MovieHorizontalList from '@/presentation/components/MovieHorizontalList'
+import MainSlideShow from '@/presentation/components/movies/MainSlideShow'
+import MovieHorizontalList from '@/presentation/components/movies/MovieHorizontalList'
 import { useMovies } from '@/presentation/hooks/useMovies'
 import React from 'react'
 import { View, Text, ActivityIndicator, ScrollView } from 'react-native'
