@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Image } from 'react-native';
+import { Pressable, Image } from 'react-native';
 
 interface Props {
     id: number,
@@ -16,8 +16,8 @@ export default function MoviePoster({ id, poster, smallPoster = false, className
         source={{ uri: poster }}
         className='shadow-md rounded-3xl w-full h-full'
         style={{
-            width: smallPoster ? 85 : 150,
-            height: smallPoster ? 130: 250,
+            width: smallPoster ? 100 : 150,
+            height: smallPoster ? 150: 250,
         }}
         resizeMode='cover'
       />

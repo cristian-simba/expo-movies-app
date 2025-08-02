@@ -5,7 +5,7 @@ import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel';
 import MoviePoster from "./MoviePoster";
 
 interface Props {
-  movies: Movie
+  movies: Movie[]
 }
 
 export default function MainSlideShow({ movies } : Props) {
